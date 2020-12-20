@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 from django.utils import timezone
 from PIL import Image
 from django.utils.translation import gettext_lazy as _
@@ -42,12 +43,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
-    date_joined = models.DateTimeField(default=timezone.now)
-    last_login = models.DateTimeField(null=True)
+    phone_regex = RegexValidator(regex=r'\+234\d{10}$', message="Phone number must be entered in the format: '+2348012345678'. A '+' and up to 13 digits allowed.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=14)
     about = models.TextField(_("about"), max_length=500, blank=True)
     profile_picture = models.ImageField(upload_to=user_directory_path, default="profile_picture/default_profile_picture.png")
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+    last_login = models.DateTimeField(null=True)
 
     objects = CustomAccountManager()
 

@@ -5,7 +5,7 @@ from .models import User
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'id', 'username', 'email', 'first_name', 'last_name', 'about', 'profile_picture', 'is_staff', 'is_active', 'last_login', 'date_joined']
+        fields = ['url', 'id', 'username', 'email', 'first_name', 'last_name', 'phone_number', 'about', 'profile_picture', 'is_staff', 'is_active', 'last_login', 'date_joined']
         read_only_fields = ['is_staff', 'is_active', 'last_login', 'date_joined']
         extra_kwargs = {
             'url': {'lookup_field': 'id'}
