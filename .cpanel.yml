@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/lakeuner/bittricks.lakerscreative.com
+    - /bin/cp -R * $DEPLOYPATH
