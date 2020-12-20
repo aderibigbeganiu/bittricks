@@ -33,9 +33,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'users',
-    'api'
-]
+    'api',
+    'orders',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
