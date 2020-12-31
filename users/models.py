@@ -44,7 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     phone_regex = RegexValidator(regex=r'\+234\d{10}$', message="Phone number must be entered in the format: '+2348012345678'. A '+' and up to 13 digits allowed.")
-    phone_number = models.CharField(validators=[phone_regex], max_length=14)
+    phone_number = models.CharField(validators=[phone_regex], max_length=14, unique=True)
     about = models.TextField(_("about"), max_length=500, blank=True)
     profile_picture = models.ImageField(upload_to=user_directory_path, default="profile_picture/default_profile_picture.png")
     is_staff = models.BooleanField(default=False)

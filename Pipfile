@@ -13,6 +13,7 @@ django-rest-auth = "*"
 django-import-export = "*"
 pillow = "*"
 django-filter = "*"
+django-environ = "*"
 
 [requires]
 python_version = "3.8"
